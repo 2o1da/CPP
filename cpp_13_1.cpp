@@ -18,38 +18,12 @@ public:
     void ResetTable(bool v) { hasTable = v; };
 };
 
-class RatedPlayer :public TableTennisPlayer
-{
-private:
-    unsigned int rating;
-public:
-    RatedPlayer(unsigned int r = 0, const string& fn = "none", const string& ln = "none", bool ht = false);
-    RatedPlayer(unsigned int r, const TableTennisPlayer& tp);
-    unsigned int Rating() { return rating; }
-    void ResetRating(unsigned int r) { rating = r; }
-};
-
-
-
 TableTennisPlayer::TableTennisPlayer(const string& fn, const string& ln, bool ht) :firstname(fn), lastname(ln), hasTable(ht){}
 
 void TableTennisPlayer::Name()const
 {
     cout << lastname << ", " << firstname << endl;
 }
-
-
-
-RatedPlayer::RatedPlayer(unsigned int r = 0, const string& fn = "none", const string& ln = "none", bool ht = false)
-    :TableTennisPlayer(fn, ln, ht)
-{
-    rating = r;
-}
-
-RatedPlayer::RatedPlayer(unsigned int r, const TableTennisPlayer& tp)
-    : TableTennisPlayer(tp), rating(r);
-
-
 
 int main()
 {
@@ -67,21 +41,6 @@ int main()
         cout << ":탁구대가 있다.\n";
     else
         cout << ":탁구대가 없다.\n";
-
-
-
-    RatedPlayer rplayer1(1140, "Mallory", "Duck", true);
-    rplayer1.Name();
-    if (rplayer1.HasTable())
-        cout << ":탁구대가 있다.\n";
-    else
-        cout << ":탁구대가 없다.\n";
-
-    cout << "이름:";
-    rplayer1.Name();
-    cout << endl;
-
-    cout << "랭킹:" << rplayer1.Rating() << endl;
     
     return 0;    
 }

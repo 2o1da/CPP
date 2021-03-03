@@ -25,7 +25,7 @@ void Brass::Deposit(double amt)
 		balance += amt;
 }
 
-void Brass::WithDraw(double amt)
+void Brass::Withdraw(double amt)
 {
 	format initialState = setFormat();
 	precis prec = cout.precision(2);
