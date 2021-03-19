@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x=3;
+
+    cout<<x<<endl;
+    cout<<
+
+    return 0;
+}
