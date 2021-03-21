@@ -4,11 +4,12 @@ using namespace std;
 struct MyStruct
 {
     int array[5]={9,7,5,3,1};
-}
+};
 
 void doSomthing(MyStruct ms)
 {
     cout<<sizeof(ms.array)<<endl;
+    cout<<sizeof((*ms).array)<<endl;
 }
 
 int main()
@@ -19,6 +20,7 @@ int main()
     cout<<sizeof(ms.array)<<endl;
 
     doSomthing(ms);
+    doSomthing(&ms);
 
     return 0;
 }
