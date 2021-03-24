@@ -4,12 +4,14 @@ using namespace std;
 void doSomething(int n)
 {
     n=10;
+
     cout<<"In doSomething "<<n<<endl;
 }
 
 void doSomething2(int &n)
 {
     n=10;
+    
     cout<<"In doSomething "<<n<<endl;
 }
 
