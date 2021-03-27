@@ -3,17 +3,34 @@ using namespace std;
 
 int main()
 {
-    const int num_students = 5;
-    int scores[num_students] = { 84, 92, 76, 81, 56 };
+    //const int num_students = 5;
+    //int scores[num_students] = { 84, 92, 76, 81, 56 };
+    
+    int scores[] = { 84, 92, 76, 81, 56 };
+
+    const int num_students = sizeof(scores) / sizeof(int); // ÇÔ¼ö parameter ·Î ¹è¿­ÀÌ ³Ñ¾î°£ °ÍÃ³·³ º¸ÀÌÁö¸¸ ½ÇÁ¦·Î´Â 'Æ÷ÀÎÅÍ ÁÖ¼Ò'°¡ ³Ñ¾î°¨
+    cout << sizeof(scores) << endl; // 20
+    cout << sizeof(*scores) << endl; // 4, x64¿¡¼­ 8¹ÙÀÌÆ®°¡ µÊ 
 
     int total_score = 0;
+    int max_score = 0;
+    int min_score = 100;
+
     for (int i = 0; i < num_students; i++)
     {
         total_score += scores[i];
+        max_score = (max_score < scores[i]) ? scores[i] : max_score;
+        min_score = (min_score > scores[i]) ? scores[i] : min_score;
+        
+		//if (max_score < scores[i])
+		//	max_score = scores[i];
     }
+    cout << max_score << endl;
+    cout << min_score << endl;
 
-    double avg_score = static_cast<double>(total_score) / num_students; // ë‚˜ëˆ„ê¸° ì „ì— casting í•œ ê²ƒê³¼ ë‚˜ëˆ„ê¸° í•œ í›„ì— casting í•œ ê²ƒì€ ë‹¤ë¦„
+    double avg_score = static_cast<double>(total_score) / num_students; // ³ª´©±â Àü¿¡ casting ÇÑ °Í°ú ³ª´©±â ÇÑ ÈÄ¿¡ casting ÇÑ °ÍÀº ´Ù¸§
+    double avg_score2 = (total_score) / num_students; // ³ª´©±â Àü¿¡ casting ÇÑ °Í°ú ³ª´©±â ÇÑ ÈÄ¿¡ casting ÇÑ °ÍÀº ´Ù¸§
 
-    cout << "HELLO" << endl;
     cout << avg_score << endl;
+    cout << avg_score2 << endl;
 }
