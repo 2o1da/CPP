@@ -19,7 +19,6 @@ int main()
     printArr(arr, length);
     cout << endl;
 
-    int flag = -1;
     for (int i = 0; i < length - 1; i++)
     {
         int min = i;
@@ -28,15 +27,10 @@ int main()
             if (arr[min] > arr[j])
             {
                 min = j;
-                //swap(arr[i], arr[j]);
             }
         }
         swap(arr[min], arr[i]);
-
         printArr(arr, length);
     }
-
-    //    printArr(arr, length);
-
     return 0;
 }
