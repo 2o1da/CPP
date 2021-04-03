@@ -3,99 +3,98 @@ using namespace std;
 
 void doSomething(int n)
 {
-	cout << &n << endl;
-	n = 10;
-	cout << "In doSomething " << n << endl;
+    cout << &n << endl;
+    n = 10;
+    cout << "In doSomething " << n << endl;
 }
 
-void doSomething2(int& n) // reference¸¦ ¾²°Ô µÇ¸é º¯¼ö ÀÚÃ¼°¡ ³Ñ¾î°¡±â ¶§¹®¿¡ ÁÖ¼Ò¸¦ º¹»çÇÒ ÇÊ¿ä ¾øÀ½  
+void doSomething2(int &n) // referenceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 {
-	cout << &n << endl;
-	n = 10; // const int& n ÀÌ¸é ÇÒ´çÇÏÁö ¸øÇÔ
-	cout << "In doSomething2 " << n << endl;
+    cout << &n << endl;
+    n = 10; // const int& n ï¿½Ì¸ï¿½ ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    cout << "In doSomething2 " << n << endl;
 }
 
-void printElements(int(&arr)[5])
+void printElements(int (&arr)[5])
 {
-	for (int i = 0; i < 5; i++)
-	{
-		cout << arr[i] << " ";
-	}
-	cout << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 struct Something
 {
-	int v1;
-	float v2;
+    int v1;
+    float v2;
 };
 
 struct Other
 {
-	Something st;
+    Something st;
 };
 
 int main()
 {
-	int value = 5;
+    int value = 5;
 
-	int* ptr = nullptr;
-	ptr = &value;
+    int *ptr = nullptr;
+    ptr = &value;
 
-	int& ref = value; // °°Àº ¸Þ¸ð¸®¸¦ ¾²´Â °ÍÃ³·³ ÀÛµ¿
-	// value º¯¼öÀÇ ¶Ç ´Ù¸¥ ÀÌ¸§ÀÎ °ÍÃ³·³ »ç¿ëÇÒ ¼ö ÀÖÀ½, º°¸í
+    int &ref = value; // ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ð¸®¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Ûµï¿½
+    // value ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
 
-	cout << ref << endl; // 5
+    cout << ref << endl; // 5
 
-	ref = 10; // *ptr=10;
+    ref = 10; // *ptr=10;
 
-	cout << value << " " << ref << endl; // 10 10 
+    cout << value << " " << ref << endl; // 10 10
 
-	cout << &value << endl;
-	cout << &ref << endl;
-	cout << ptr << endl;
-	cout << &ptr << endl; // Æ÷ÀÎÅÍ º¯¼ö ÀÚÃ¼°¡ ´Ù¸¥ ÁÖ¼Ò¸¦ °®°í ÀÖÀ½
+    cout << &value << endl;
+    cout << &ref << endl;
+    cout << ptr << endl;
+    cout << &ptr << endl; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½Ö¼Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	//int& ref2 = value; //reference´Â Ç×»ó ÃÊ±âÈ­°¡ µÇ¾î¾ß ÇÔ, º°¸íÀÌ´Ï±î ¿ø·¡ ÀÌ¸§ÀÌ ÀÖ¾î¾ß ÇÔ, ¸®ÅÍ·²Àº ¸ø µé¾î°¨ (¸®ÅÍ·²Àº ÁÖ¼Ò¸¦ °®Áö ¾Ê±â ¶§¹®)
-	const int y = 8;
-	//int& ref2 = y; // ref2¿¡¼­ y°ªÀ» ¹Ù²Ü ¼ö ÀÖ±â ¶§¹®¿¡ ¿¡·¯
-	const int& ref2 = y;
+    //int& ref2 = value; //referenceï¿½ï¿½ ï¿½×»ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ì´Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½î°¨ (ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ ï¿½Ö¼Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    const int y = 8;
+    //int& ref2 = y; // ref2ï¿½ï¿½ï¿½ï¿½ yï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    const int &ref2 = y;
 
-	int value1 = 5;
-	int value2 = 10;
-	int& ref1 = value1;
-	cout << ref1 << endl; // 5
-	ref1 = value2;
-	cout << ref1 << endl; // 10
+    int value1 = 5;
+    int value2 = 10;
+    int &ref1 = value1;
+    cout << ref1 << endl; // 5
+    ref1 = value2;
+    cout << ref1 << endl; // 10
 
-	int n = 5;
-	cout << n << endl; // 5
-	cout << &n << endl;
-	doSomething(n); // 10
-	cout << n << endl; // 5  	
-	
-	cout << n << endl; // 5
-	cout << &n << endl;
-	doSomething2(n); // 10
-	cout << n << endl; // 10  
+    int n = 5;
+    cout << n << endl; // 5
+    cout << &n << endl;
+    doSomething(n);    // 10
+    cout << n << endl; // 5
 
-	const int length = 5;
-	int arr[length] = { 1,2,3,4,5 };
-	printElements(arr);
+    cout << n << endl; // 5
+    cout << &n << endl;
+    doSomething2(n);   // 10
+    cout << n << endl; // 10
 
+    const int length = 5;
+    int arr[length] = { 1, 2, 3, 4, 5 };
+    printElements(arr);
 
-	Other ot;
-	int& v1 = ot.st.v1;
-	v1 = 1;
+    Other ot;
+    int &v1 = ot.st.v1;
+    v1 = 1;
 
-	int x = 5;
-	int* const ptr_x = &x;
-	int& ref_x = x;
+    int x = 5;
+    int *const ptr_x = &x;
+    int &ref_x = x;
 
-	*ptr_x = 10;
-	ref_x = 10;
-	// referenceµµ ³»ºÎÀûÀ¸·Î Æ÷ÀÎÅÍ·Î µÇ¾îÀÖÀ½
-	cout << "x:" << x << endl;
+    *ptr_x = 10;
+    ref_x = 10;
+    // referenceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½
+    cout << "x:" << x << endl;
 
-	return 0; 
+    return 0;
 }
