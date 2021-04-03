@@ -7,16 +7,37 @@ using namespace std;
 // 3.dynamic memory allocation:포인터와 관련지어 까다로운 부분
 
 int main()
-{
-    int arr[10]; // 정적 배열, 스택에 들어가는데 스택은 용량이 적음
-        //  동적 할당하면 힙에 들어가며, 힙은 용량이 큼
-    int var;
-    var=7;
+{ 
+    //int arr[10]; // 정적 배열, 스택에 들어가는데 스택은 용량이 적음
+        //  동적 할당하면 힙에 들어가며, 힙은 용량이 커서 크게 받을 수 있음
     
-    int*ptr=new int{7}; // 4바이트만큼 운영체제에게 받아오고 그 메모리 주소를 우리에게 알려주기 때문에 포인터로 받아야 함
-    // *ptr=7;
+    int *ptr = new (std::nothrow)int;//{ 7 };
+    // 4바이트만큼 운영체제에게 받아오고 그 메모리 주소를 우리에게 알려주기 때문에 포인터로 받아야 함
+    *ptr=7;
     
+    int *ptr2=ptr;
+
+    cout<<ptr<<endl;
+    cout<<*ptr<<endl;
+
     delete ptr; // 메모리를 운영체제에게 돌려줌
+    ptr=nullptr;
+
+    if(ptr!=nullptr) // if(ptr)
+    {
+        cout<<ptr<<endl;
+        cout<<*ptr<<endl;
+    };
+
+    // memory leak
+    while(1)
+    {
+        int*ptr3=new int;
+        cout<<ptr3<<endl;
+        
+        delete ptr3;
+        // new, delete은 운영체제에 메모리를 달라고 해야하기 때문에 적게 사용하는 방식 선호
+    }
 
     return 0;
 }
